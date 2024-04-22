@@ -21,7 +21,7 @@ namespace TP_Final2
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true";//a donde me vpy a conectar
                 comando.CommandType = System.Data.CommandType.Text; //que tipo es x ej: txt
-                comando.CommandText = "select Id, Nombre, Descripcion, ImagenUrl from ARTICULOS"; // la consulta que hago
+                comando.CommandText = "Select A.Id, Nombre, A.Descripcion, ImagenUrl, C.Descripcion as Categoria, M.Descripcion as Marca From ARTICULOS A, CATEGORIAS C, MARCAS M where C.Id = A.IdCategoria and M.Id = A.IdMarca"; // la consulta que hago
                 comando.Connection = conexion;
 
                 conexion.Open();
@@ -35,6 +35,10 @@ namespace TP_Final2
                     aux.Nombre = (string)lector["Nombre"]; // es lo mismo que la linea de arriba pero mas practico
                     aux.Descripcion = (string)lector["Descripcion"];
                     aux.ImagenUrl = (string)lector["ImagenUrl"];
+                   // aux.Tipo = new Elemento(); // para que no me referencia nula
+                    //aux.Tipo.Descripcion = (string)lector["Tipo"]; //tipo no va tener una instancia
+                    aux.Marca = new Elemento();
+                    aux.Marca.Descripcion = (string)lector["Marca"];
 
                     lista.Add(aux); //agreso ese articulo a la lista
                 }

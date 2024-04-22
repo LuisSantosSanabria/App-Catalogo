@@ -24,6 +24,7 @@ namespace TP_Final2
             TiendaNegocio negocio = new TiendaNegocio();
             listaTienda = negocio.listar();
             dgvTienda.DataSource = listaTienda;
+            dgvTienda.Columns["ImagenUrl"].Visible = false;
             // lee las prperty y las convierte en columnas
             cargarImagen(listaTienda[0].ImagenUrl); //cargar imagen encapsulamineto
 
