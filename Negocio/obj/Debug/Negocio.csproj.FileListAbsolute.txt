@@ -1,0 +1,9 @@
+C:\Users\llsss\Desktop\App Catalogo\Tienda\Negocio\bin\Debug\Negocio.dll
+C:\Users\llsss\Desktop\App Catalogo\Tienda\Negocio\bin\Debug\Negocio.pdb
+C:\Users\llsss\Desktop\App Catalogo\Tienda\Negocio\bin\Debug\Dominio.dll
+C:\Users\llsss\Desktop\App Catalogo\Tienda\Negocio\bin\Debug\Dominio.pdb
+C:\Users\llsss\Desktop\App Catalogo\Tienda\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+C:\Users\llsss\Desktop\App Catalogo\Tienda\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\llsss\Desktop\App Catalogo\Tienda\Negocio\obj\Debug\Negocio.csproj.Up2Date
+C:\Users\llsss\Desktop\App Catalogo\Tienda\Negocio\obj\Debug\Negocio.dll
+C:\Users\llsss\Desktop\App Catalogo\Tienda\Negocio\obj\Debug\Negocio.pdb

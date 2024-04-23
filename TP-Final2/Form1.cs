@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
+using Negocio;
 
 namespace TP_Final2
 {
@@ -46,6 +48,13 @@ namespace TP_Final2
             {
                 pbxTienda.Load("https://lmgd.co.uk/wp-content/uploads/2016/12/Gallery-Icon.jpg");
             }
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            // para saltar a la otra ventana
+            frmAltaTienda alta = new frmAltaTienda();
+            alta.ShowDialog();
         }
     }
 }

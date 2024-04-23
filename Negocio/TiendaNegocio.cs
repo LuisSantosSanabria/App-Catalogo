@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient; // puedo crear objetos Db
+using Dominio;
 
-namespace TP_Final2
+namespace Negocio
+
 {
-    internal class TiendaNegocio //clase de acceso a datos para los articulos
+    public class TiendaNegocio //clase de acceso a datos para los articulos
     {
         // funcion que lee registross de la BD
         public List<Tienda> listar()
@@ -21,7 +23,7 @@ namespace TP_Final2
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true";//a donde me vpy a conectar
                 comando.CommandType = System.Data.CommandType.Text; //que tipo es x ej: txt
-                comando.CommandText = "Select A.Id, Nombre, A.Descripcion, ImagenUrl, C.Descripcion as Categoria, M.Descripcion as Marca From ARTICULOS A, CATEGORIAS C, MARCAS M where C.Id = A.IdCategoria and M.Id = A.IdMarca"; // la consulta que hago
+                comando.CommandText = "Select A.Id,A.Codigo, Nombre, A.Descripcion, ImagenUrl, C.Descripcion as Categoria, M.Descripcion as Marca From ARTICULOS A, CATEGORIAS C, MARCAS M where C.Id = A.IdCategoria and M.Id = A.IdMarca\r\n"; // la consulta que hago
                 comando.Connection = conexion;
 
                 conexion.Open();
@@ -32,6 +34,7 @@ namespace TP_Final2
                 {
                     Tienda aux = new Tienda();
                     aux.Id = lector.GetInt32(0);
+                    aux.Codigo = (string)lector["Codigo"];
                     aux.Nombre = (string)lector["Nombre"]; // es lo mismo que la linea de arriba pero mas practico
                     aux.Descripcion = (string)lector["Descripcion"];
                     aux.ImagenUrl = (string)lector["ImagenUrl"];
@@ -51,6 +54,30 @@ namespace TP_Final2
             }
 
             
+        }
+
+        public void agregar(Tienda nuevo)
+        {
+            //que necesito para conectar a la base de datos
+            AccesoDatos datos = new AccesoDatos();
+            //no va devolcer registros va insertar registros
+            try
+            {
+                datos.setearConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion) values ('" + nuevo.Codigo + "','" + nuevo.Nombre + "','" + nuevo.Descripcion + "')");
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public void modificar(Tienda modificar)
+        {
+
         }
     }
 }

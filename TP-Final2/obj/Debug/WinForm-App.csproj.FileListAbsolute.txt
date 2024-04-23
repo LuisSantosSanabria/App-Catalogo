@@ -1,0 +1,16 @@
+C:\Users\llsss\Desktop\App Catalogo\Tienda\TP-Final2\bin\Debug\TP-Final2.exe.config
+C:\Users\llsss\Desktop\App Catalogo\Tienda\TP-Final2\bin\Debug\TP-Final2.exe
+C:\Users\llsss\Desktop\App Catalogo\Tienda\TP-Final2\bin\Debug\TP-Final2.pdb
+C:\Users\llsss\Desktop\App Catalogo\Tienda\TP-Final2\bin\Debug\Dominio.dll
+C:\Users\llsss\Desktop\App Catalogo\Tienda\TP-Final2\bin\Debug\Negocio.dll
+C:\Users\llsss\Desktop\App Catalogo\Tienda\TP-Final2\bin\Debug\Dominio.pdb
+C:\Users\llsss\Desktop\App Catalogo\Tienda\TP-Final2\bin\Debug\Negocio.pdb
+C:\Users\llsss\Desktop\App Catalogo\Tienda\TP-Final2\obj\Debug\WinForm-App.csproj.AssemblyReference.cache
+C:\Users\llsss\Desktop\App Catalogo\Tienda\TP-Final2\obj\Debug\TP_Final2.Form1.resources
+C:\Users\llsss\Desktop\App Catalogo\Tienda\TP-Final2\obj\Debug\TP_Final2.Properties.Resources.resources
+C:\Users\llsss\Desktop\App Catalogo\Tienda\TP-Final2\obj\Debug\WinForm-App.csproj.GenerateResource.cache
+C:\Users\llsss\Desktop\App Catalogo\Tienda\TP-Final2\obj\Debug\WinForm-App.csproj.CoreCompileInputs.cache
+C:\Users\llsss\Desktop\App Catalogo\Tienda\TP-Final2\obj\Debug\WinForm-.FA645943.Up2Date
+C:\Users\llsss\Desktop\App Catalogo\Tienda\TP-Final2\obj\Debug\TP-Final2.exe
+C:\Users\llsss\Desktop\App Catalogo\Tienda\TP-Final2\obj\Debug\TP-Final2.pdb
+C:\Users\llsss\Desktop\App Catalogo\Tienda\TP-Final2\obj\Debug\TP_Final2.frmAltaTienda.resources

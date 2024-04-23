@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TP_Final2
+namespace Dominio
 {
-    internal class Tienda // MI claase base del objeto que voy a manipular en mi app
+    public class Tienda // MI claase base del objeto que voy a manipular en mi app
     {
         public int Id { get; set; }
+        public string Codigo { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public string ImagenUrl { get; set; }

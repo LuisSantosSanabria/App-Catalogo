@@ -30,6 +30,7 @@
         {
             this.dgvTienda = new System.Windows.Forms.DataGridView();
             this.pbxTienda = new System.Windows.Forms.PictureBox();
+            this.btnAgregar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTienda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxTienda)).BeginInit();
             this.SuspendLayout();
@@ -52,14 +53,26 @@
             this.pbxTienda.TabIndex = 1;
             this.pbxTienda.TabStop = false;
             // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Location = new System.Drawing.Point(36, 275);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregar.TabIndex = 2;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(843, 450);
+            this.ClientSize = new System.Drawing.Size(843, 303);
+            this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.pbxTienda);
             this.Controls.Add(this.dgvTienda);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTienda)).EndInit();
@@ -72,6 +85,7 @@
 
         private System.Windows.Forms.DataGridView dgvTienda;
         private System.Windows.Forms.PictureBox pbxTienda;
+        private System.Windows.Forms.Button btnAgregar;
     }
 }
 
