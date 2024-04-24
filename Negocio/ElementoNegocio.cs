@@ -9,13 +9,13 @@ namespace Negocio
 {
     public class ElementoNegocio
     {
-        public List<Elemento> listar()
+        public List<Elemento> listarMarcas()
         {
             List<Elemento> lista = new List<Elemento>();
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("Select Id, Descripcion From MARCAS");
+                datos.setearConsulta("Select Id, Descripcion from MARCAS");
                 datos.ejecutarLectura();
 
                 while(datos.Lector.Read())
@@ -23,8 +23,34 @@ namespace Negocio
                     Elemento aux = new Elemento();
                     aux.Id = (int)datos.Lector["Id"];
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
-
                     lista.Add(aux);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public List<Categoria> listarCategorias()
+        {
+            List<Categoria> lista = new List<Categoria>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("Select Id, Descripcion From CATEGORIAS");
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Categoria cat = new Categoria();
+                    cat.IdC = (int)datos.Lector["Id"];
+                    cat.DescripcionC = (string)datos.Lector["Descripcion"];
+                    lista.Add(cat);
                 }
                 return lista;
             }

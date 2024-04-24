@@ -34,6 +34,8 @@ namespace TP_Final2
                 art.Codigo = txtCodigo.Text;
                 art.Nombre = txtNombre.Text;
                 art.Descripcion = txtDescripcion.Text;
+                art.Marca = (Elemento)cboMarca.SelectedItem;
+                art.Categoria = (Elemento)cboCategoria.SelectedItem;
 
                 //ahora lo tengo que mandar a la base de datos
                 negocio.agregar(art);
@@ -44,6 +46,26 @@ namespace TP_Final2
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void frmAltaTienda_Load(object sender, EventArgs e)
+        {
+            ElementoNegocio elementonegocio = new ElementoNegocio();
+            try
+            {
+                // voy a la base de datos
+               cboMarca.DataSource = elementonegocio.listarMarcas();
+               cboCategoria.DataSource = elementonegocio.listarCategorias();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void cboCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

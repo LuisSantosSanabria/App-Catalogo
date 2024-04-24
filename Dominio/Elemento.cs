@@ -15,5 +15,16 @@ namespace Dominio
             return Descripcion;
 
         }
+
+    }
+    public class Categoria
+    {
+        // elementos de categoria
+        public int IdC { get; set; }
+        public string DescripcionC { set; get; }
+        public override string ToString()
+        {
+            return DescripcionC;
+        }
     }
 }

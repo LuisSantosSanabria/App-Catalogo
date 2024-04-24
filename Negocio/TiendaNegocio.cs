@@ -42,6 +42,8 @@ namespace Negocio
                     //aux.Tipo.Descripcion = (string)lector["Tipo"]; //tipo no va tener una instancia
                     aux.Marca = new Elemento();
                     aux.Marca.Descripcion = (string)lector["Marca"];
+                    aux.Categoria = new Elemento();
+                    aux.Categoria.Descripcion = (string)lector["Categoria"];
 
                     lista.Add(aux); //agreso ese articulo a la lista
                 }
