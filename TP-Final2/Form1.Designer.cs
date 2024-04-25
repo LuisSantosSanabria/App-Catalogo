@@ -38,8 +38,11 @@
             // dgvTienda
             // 
             this.dgvTienda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTienda.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvTienda.Location = new System.Drawing.Point(36, 31);
+            this.dgvTienda.MultiSelect = false;
             this.dgvTienda.Name = "dgvTienda";
+            this.dgvTienda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTienda.Size = new System.Drawing.Size(515, 238);
             this.dgvTienda.TabIndex = 0;
             this.dgvTienda.SelectionChanged += new System.EventHandler(this.dgvTienda_SelectionChanged);

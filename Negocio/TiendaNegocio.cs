@@ -37,13 +37,19 @@ namespace Negocio
                     aux.Codigo = (string)lector["Codigo"];
                     aux.Nombre = (string)lector["Nombre"]; // es lo mismo que la linea de arriba pero mas practico
                     aux.Descripcion = (string)lector["Descripcion"];
-                    aux.ImagenUrl = (string)lector["ImagenUrl"];
+
+                    // para la exepciones de las imagenes
+                    // if(!(lector.IsDBNull(lector.GetOrdinal("ImagenUrl")))) // si no es nulo lo leo
+                    if (!(lector["ImagenUrl"] is DBNull))
+                    aux.ImagenUrl = (string)lector["ImagenUrl"]; // si no es dbnull trata de leerlo
+                    // si la columna es Null no hay problema, Si es NOt NUll si hago estas lineas
+
                    // aux.Tipo = new Elemento(); // para que no me referencia nula
                     //aux.Tipo.Descripcion = (string)lector["Tipo"]; //tipo no va tener una instancia
-                    aux.Marca = new Elemento();
+                    aux.Marca = new Marca();
                     aux.Marca.Descripcion = (string)lector["Marca"];
-                    aux.Categoria = new Elemento();
-                    aux.Categoria.Descripcion = (string)lector["Categoria"];
+                    aux.Categoria = new Categoria();
+                    aux.Categoria.DescripcionC= (string)lector["Categoria"];
 
                     lista.Add(aux); //agreso ese articulo a la lista
                 }
@@ -65,7 +71,10 @@ namespace Negocio
             //no va devolcer registros va insertar registros
             try
             {
-                datos.setearConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion) values ('" + nuevo.Codigo + "','" + nuevo.Nombre + "','" + nuevo.Descripcion + "')");
+                datos.setearConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria,ImagenUrl) values ('" + nuevo.Codigo + "','" + nuevo.Nombre + "','" + nuevo.Descripcion + "', @idMarca, @idCategoria, @ImagenUrl)");
+                datos.setearParanetros("@idMarca", nuevo.Marca.Id);
+                datos.setearParanetros("@idCategoria", nuevo.Categoria.IdC); // duda
+                datos.setearParanetros("@ImagenUrl", nuevo.ImagenUrl);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

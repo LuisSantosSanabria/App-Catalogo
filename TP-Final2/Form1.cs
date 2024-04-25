@@ -22,14 +22,7 @@ namespace TP_Final2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //invoco la lectura de BD
-            TiendaNegocio negocio = new TiendaNegocio();
-            listaTienda = negocio.listar();
-            dgvTienda.DataSource = listaTienda;
-            dgvTienda.Columns["ImagenUrl"].Visible = false;
-            // lee las prperty y las convierte en columnas
-            cargarImagen(listaTienda[0].ImagenUrl); //cargar imagen encapsulamineto
-
+            cargar();
         }
 
         private void dgvTienda_SelectionChanged(object sender, EventArgs e)
@@ -37,6 +30,25 @@ namespace TP_Final2
             //tomom el elemeto seleccionado de la frilla
             Tienda seleccionado = (Tienda)dgvTienda.CurrentRow.DataBoundItem; //de la fila,dame, el objeto enlazado lo guardo en seleccinado
             cargarImagen(seleccionado.ImagenUrl);
+        }
+
+        private void cargar()
+        {
+            try
+            {
+                //invoco la lectura de BD
+                TiendaNegocio negocio = new TiendaNegocio();
+                listaTienda = negocio.listar();
+                dgvTienda.DataSource = listaTienda;
+                dgvTienda.Columns["ImagenUrl"].Visible = false;
+                dgvTienda.Columns["Id"].Visible = false;
+                // lee las prperty y las convierte en columnas
+                cargarImagen(listaTienda[0].ImagenUrl); //cargar imagen encapsulamineto
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
         private void cargarImagen(string imagen) //para capturar exepciones
         {
@@ -55,6 +67,8 @@ namespace TP_Final2
             // para saltar a la otra ventana
             frmAltaTienda alta = new frmAltaTienda();
             alta.ShowDialog();
+            //actulizar la crga
+            cargar();
         }
     }
 }

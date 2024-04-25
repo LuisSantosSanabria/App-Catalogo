@@ -34,12 +34,14 @@ namespace TP_Final2
                 art.Codigo = txtCodigo.Text;
                 art.Nombre = txtNombre.Text;
                 art.Descripcion = txtDescripcion.Text;
-                art.Marca = (Elemento)cboMarca.SelectedItem;
-                art.Categoria = (Elemento)cboCategoria.SelectedItem;
+                art.Marca = (Marca)cboMarca.SelectedItem;
+                art.Categoria = (Categoria)cboCategoria.SelectedItem;
+                // Mapear para agregar una imagen nueva del articulo
+                art.ImagenUrl = txtImagenUrl.Text;
 
                 //ahora lo tengo que mandar a la base de datos
                 negocio.agregar(art);
-                MessageBox.Show("Agregafo con exito");
+                MessageBox.Show("Agregado con exito");
                 Close();
             }
             catch (Exception ex)
@@ -66,6 +68,22 @@ namespace TP_Final2
         private void cboCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtImagenUrl_Leave(object sender, EventArgs e)
+        {
+            cargarImagen(txtImagenUrl.Text);
+        }
+        private void cargarImagen(string imagen) //para capturar exepciones
+        {
+            try
+            {
+                pbxTienda.Load(imagen);
+            }
+            catch (Exception ex)
+            {
+                pbxTienda.Load("https://lmgd.co.uk/wp-content/uploads/2016/12/Gallery-Icon.jpg");
+            }
         }
     }
 }

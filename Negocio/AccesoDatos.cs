@@ -60,6 +60,13 @@ namespace Negocio
                 throw ex;
             }
         }
+
+        //agregar parametros
+        public void setearParanetros(string nombre, object valor)
+        {
+            comando.Parameters.AddWithValue(nombre, valor);  // nombre del parametro y tipo
+        }
+
         //cerrar conexion
         public void cerrarConexion()
         {

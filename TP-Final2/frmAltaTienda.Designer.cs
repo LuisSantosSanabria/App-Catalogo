@@ -42,12 +42,16 @@ namespace TP_Final2
             this.lblCategoria = new System.Windows.Forms.Label();
             this.cboMarca = new System.Windows.Forms.ComboBox();
             this.cboCategoria = new System.Windows.Forms.ComboBox();
+            this.lblUrlIMagen = new System.Windows.Forms.Label();
+            this.txtImagenUrl = new System.Windows.Forms.TextBox();
+            this.pbxTienda = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxTienda)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCodigo
             // 
             this.lblCodigo.AutoSize = true;
-            this.lblCodigo.Location = new System.Drawing.Point(77, 20);
+            this.lblCodigo.Location = new System.Drawing.Point(77, 7);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Size = new System.Drawing.Size(40, 13);
             this.lblCodigo.TabIndex = 0;
@@ -56,7 +60,7 @@ namespace TP_Final2
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(77, 59);
+            this.label2.Location = new System.Drawing.Point(77, 46);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 1;
@@ -65,7 +69,7 @@ namespace TP_Final2
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(58, 97);
+            this.label3.Location = new System.Drawing.Point(58, 84);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 2;
@@ -73,28 +77,28 @@ namespace TP_Final2
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(130, 17);
+            this.txtCodigo.Location = new System.Drawing.Point(130, 4);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(100, 20);
-            this.txtCodigo.TabIndex = 3;
+            this.txtCodigo.TabIndex = 0;
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(130, 56);
+            this.txtNombre.Location = new System.Drawing.Point(130, 43);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(100, 20);
-            this.txtNombre.TabIndex = 4;
+            this.txtNombre.TabIndex = 1;
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(130, 94);
+            this.txtDescripcion.Location = new System.Drawing.Point(130, 81);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(100, 20);
-            this.txtDescripcion.TabIndex = 5;
+            this.txtDescripcion.TabIndex = 2;
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(77, 208);
+            this.btnAceptar.Location = new System.Drawing.Point(75, 208);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 6;
@@ -104,7 +108,7 @@ namespace TP_Final2
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(168, 208);
+            this.btnCancelar.Location = new System.Drawing.Point(166, 208);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 7;
@@ -115,7 +119,7 @@ namespace TP_Final2
             // lblMarca
             // 
             this.lblMarca.AutoSize = true;
-            this.lblMarca.Location = new System.Drawing.Point(86, 133);
+            this.lblMarca.Location = new System.Drawing.Point(86, 149);
             this.lblMarca.Name = "lblMarca";
             this.lblMarca.Size = new System.Drawing.Size(37, 13);
             this.lblMarca.TabIndex = 8;
@@ -124,7 +128,7 @@ namespace TP_Final2
             // lblCategoria
             // 
             this.lblCategoria.AutoSize = true;
-            this.lblCategoria.Location = new System.Drawing.Point(69, 167);
+            this.lblCategoria.Location = new System.Drawing.Point(69, 183);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(52, 13);
             this.lblCategoria.TabIndex = 9;
@@ -134,26 +138,55 @@ namespace TP_Final2
             // 
             this.cboMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMarca.FormattingEnabled = true;
-            this.cboMarca.Location = new System.Drawing.Point(130, 130);
+            this.cboMarca.Location = new System.Drawing.Point(130, 146);
             this.cboMarca.Name = "cboMarca";
             this.cboMarca.Size = new System.Drawing.Size(100, 21);
-            this.cboMarca.TabIndex = 10;
+            this.cboMarca.TabIndex = 4;
             // 
             // cboCategoria
             // 
             this.cboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCategoria.FormattingEnabled = true;
-            this.cboCategoria.Location = new System.Drawing.Point(130, 164);
+            this.cboCategoria.Location = new System.Drawing.Point(130, 180);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(100, 21);
-            this.cboCategoria.TabIndex = 11;
+            this.cboCategoria.TabIndex = 5;
             this.cboCategoria.SelectedIndexChanged += new System.EventHandler(this.cboCategoria_SelectedIndexChanged);
+            // 
+            // lblUrlIMagen
+            // 
+            this.lblUrlIMagen.AutoSize = true;
+            this.lblUrlIMagen.Location = new System.Drawing.Point(59, 118);
+            this.lblUrlIMagen.Name = "lblUrlIMagen";
+            this.lblUrlIMagen.Size = new System.Drawing.Size(58, 13);
+            this.lblUrlIMagen.TabIndex = 12;
+            this.lblUrlIMagen.Text = "Url Imagen";
+            // 
+            // txtImagenUrl
+            // 
+            this.txtImagenUrl.Location = new System.Drawing.Point(130, 115);
+            this.txtImagenUrl.Name = "txtImagenUrl";
+            this.txtImagenUrl.Size = new System.Drawing.Size(100, 20);
+            this.txtImagenUrl.TabIndex = 3;
+            this.txtImagenUrl.Leave += new System.EventHandler(this.txtImagenUrl_Leave);
+            // 
+            // pbxTienda
+            // 
+            this.pbxTienda.Location = new System.Drawing.Point(257, 4);
+            this.pbxTienda.Name = "pbxTienda";
+            this.pbxTienda.Size = new System.Drawing.Size(217, 197);
+            this.pbxTienda.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxTienda.TabIndex = 14;
+            this.pbxTienda.TabStop = false;
             // 
             // frmAltaTienda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(302, 243);
+            this.ClientSize = new System.Drawing.Size(486, 243);
+            this.Controls.Add(this.pbxTienda);
+            this.Controls.Add(this.txtImagenUrl);
+            this.Controls.Add(this.lblUrlIMagen);
             this.Controls.Add(this.cboCategoria);
             this.Controls.Add(this.cboMarca);
             this.Controls.Add(this.lblCategoria);
@@ -170,6 +203,7 @@ namespace TP_Final2
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Producto";
             this.Load += new System.EventHandler(this.frmAltaTienda_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxTienda)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,5 +223,8 @@ namespace TP_Final2
         private System.Windows.Forms.Label lblCategoria;
         private System.Windows.Forms.ComboBox cboMarca;
         private System.Windows.Forms.ComboBox cboCategoria;
+        private System.Windows.Forms.Label lblUrlIMagen;
+        private System.Windows.Forms.TextBox txtImagenUrl;
+        private System.Windows.Forms.PictureBox pbxTienda;
     }
 }
