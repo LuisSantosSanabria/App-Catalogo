@@ -28,8 +28,11 @@ namespace TP_Final2
         private void dgvTienda_SelectionChanged(object sender, EventArgs e)
         {
             //tomom el elemeto seleccionado de la frilla
+            if(dgvTienda.CurrentRow != null) // para que no se rompa al busar y borrar la grilla
+            {
             Tienda seleccionado = (Tienda)dgvTienda.CurrentRow.DataBoundItem; //de la fila,dame, el objeto enlazado lo guardo en seleccinado
             cargarImagen(seleccionado.ImagenUrl);
+            }
         }
 
         private void cargar()
@@ -40,8 +43,7 @@ namespace TP_Final2
                 TiendaNegocio negocio = new TiendaNegocio();
                 listaTienda = negocio.listar();
                 dgvTienda.DataSource = listaTienda;
-                dgvTienda.Columns["ImagenUrl"].Visible = false;
-                dgvTienda.Columns["Id"].Visible = false;
+                ocultarColumnas();
                 // lee las prperty y las convierte en columnas
                 cargarImagen(listaTienda[0].ImagenUrl); //cargar imagen encapsulamineto
             }
@@ -49,6 +51,11 @@ namespace TP_Final2
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+        private void  ocultarColumnas()
+        {
+            dgvTienda.Columns["ImagenUrl"].Visible = false;
+            dgvTienda.Columns["Id"].Visible = false;
         }
         private void cargarImagen(string imagen) //para capturar exepciones
         {
@@ -81,6 +88,48 @@ namespace TP_Final2
             frmAltaTienda modificar= new frmAltaTienda(seleccionado); //este recibe un prodcuto
             modificar.ShowDialog();
             cargar();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            TiendaNegocio negocio= new TiendaNegocio();
+            Tienda seleccionado;
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("Eliminar el Articulo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning); // me guardo la rspt
+                if (respuesta == DialogResult.Yes)
+                {
+                    seleccionado = (Tienda)dgvTienda.CurrentRow.DataBoundItem;
+                    negocio.eliminar(seleccionado.Id);
+                    cargar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnFiltro_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            // se actuliza el filtro con cada tecla que aprieta text changed
+            List<Tienda> listaFiltrada; // por eso no creo lista y creo la variable vacia
+            string filtro = txtFiltro.Text;
+            if (filtro.Length >= 3) //me filtra cuando es mayor a 3 caracteres
+            {
+                listaFiltrada = listaTienda.FindAll(x => x.Nombre.ToLower().Contains(filtro.ToLower()) || x.Marca.Descripcion.ToUpper().Contains(filtro.ToUpper()) || x.Categoria.Descripcion.ToUpper().Contains(filtro.ToUpper())); // fidAll me devuelve un onjeto // devuelve una lista
+            }                                                         // si tiene una coincidencia
+            else // sino tengo filtro me pone la lista original
+            {
+                listaFiltrada = listaTienda;
+            }
+            dgvTienda.DataSource = null;
+            dgvTienda.DataSource = listaFiltrada;
+            ocultarColumnas();
         }
     }
 }

@@ -45,13 +45,14 @@ namespace TP_Final2
             this.lblUrlIMagen = new System.Windows.Forms.Label();
             this.txtImagenUrl = new System.Windows.Forms.TextBox();
             this.pbxTienda = new System.Windows.Forms.PictureBox();
+            this.btnAgregarImagen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbxTienda)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCodigo
             // 
             this.lblCodigo.AutoSize = true;
-            this.lblCodigo.Location = new System.Drawing.Point(77, 7);
+            this.lblCodigo.Location = new System.Drawing.Point(48, 9);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Size = new System.Drawing.Size(40, 13);
             this.lblCodigo.TabIndex = 0;
@@ -60,7 +61,7 @@ namespace TP_Final2
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(77, 46);
+            this.label2.Location = new System.Drawing.Point(48, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 1;
@@ -69,7 +70,7 @@ namespace TP_Final2
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(58, 84);
+            this.label3.Location = new System.Drawing.Point(29, 86);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 2;
@@ -77,28 +78,28 @@ namespace TP_Final2
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(130, 4);
+            this.txtCodigo.Location = new System.Drawing.Point(101, 6);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(100, 20);
             this.txtCodigo.TabIndex = 0;
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(130, 43);
+            this.txtNombre.Location = new System.Drawing.Point(101, 45);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(100, 20);
             this.txtNombre.TabIndex = 1;
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(130, 81);
+            this.txtDescripcion.Location = new System.Drawing.Point(101, 83);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(100, 20);
             this.txtDescripcion.TabIndex = 2;
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(75, 208);
+            this.btnAceptar.Location = new System.Drawing.Point(46, 210);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 6;
@@ -108,7 +109,7 @@ namespace TP_Final2
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(166, 208);
+            this.btnCancelar.Location = new System.Drawing.Point(137, 210);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 7;
@@ -119,7 +120,7 @@ namespace TP_Final2
             // lblMarca
             // 
             this.lblMarca.AutoSize = true;
-            this.lblMarca.Location = new System.Drawing.Point(86, 149);
+            this.lblMarca.Location = new System.Drawing.Point(57, 151);
             this.lblMarca.Name = "lblMarca";
             this.lblMarca.Size = new System.Drawing.Size(37, 13);
             this.lblMarca.TabIndex = 8;
@@ -128,7 +129,7 @@ namespace TP_Final2
             // lblCategoria
             // 
             this.lblCategoria.AutoSize = true;
-            this.lblCategoria.Location = new System.Drawing.Point(69, 183);
+            this.lblCategoria.Location = new System.Drawing.Point(40, 185);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(52, 13);
             this.lblCategoria.TabIndex = 9;
@@ -138,7 +139,7 @@ namespace TP_Final2
             // 
             this.cboMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMarca.FormattingEnabled = true;
-            this.cboMarca.Location = new System.Drawing.Point(130, 146);
+            this.cboMarca.Location = new System.Drawing.Point(101, 148);
             this.cboMarca.Name = "cboMarca";
             this.cboMarca.Size = new System.Drawing.Size(100, 21);
             this.cboMarca.TabIndex = 4;
@@ -147,7 +148,7 @@ namespace TP_Final2
             // 
             this.cboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCategoria.FormattingEnabled = true;
-            this.cboCategoria.Location = new System.Drawing.Point(130, 180);
+            this.cboCategoria.Location = new System.Drawing.Point(101, 182);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(100, 21);
             this.cboCategoria.TabIndex = 5;
@@ -156,7 +157,7 @@ namespace TP_Final2
             // lblUrlIMagen
             // 
             this.lblUrlIMagen.AutoSize = true;
-            this.lblUrlIMagen.Location = new System.Drawing.Point(59, 118);
+            this.lblUrlIMagen.Location = new System.Drawing.Point(30, 120);
             this.lblUrlIMagen.Name = "lblUrlIMagen";
             this.lblUrlIMagen.Size = new System.Drawing.Size(58, 13);
             this.lblUrlIMagen.TabIndex = 12;
@@ -164,7 +165,7 @@ namespace TP_Final2
             // 
             // txtImagenUrl
             // 
-            this.txtImagenUrl.Location = new System.Drawing.Point(130, 115);
+            this.txtImagenUrl.Location = new System.Drawing.Point(101, 117);
             this.txtImagenUrl.Name = "txtImagenUrl";
             this.txtImagenUrl.Size = new System.Drawing.Size(100, 20);
             this.txtImagenUrl.TabIndex = 3;
@@ -172,18 +173,30 @@ namespace TP_Final2
             // 
             // pbxTienda
             // 
-            this.pbxTienda.Location = new System.Drawing.Point(257, 4);
+            this.pbxTienda.Location = new System.Drawing.Point(257, 22);
             this.pbxTienda.Name = "pbxTienda";
             this.pbxTienda.Size = new System.Drawing.Size(217, 197);
             this.pbxTienda.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxTienda.TabIndex = 14;
             this.pbxTienda.TabStop = false;
+            this.pbxTienda.Click += new System.EventHandler(this.pbxTienda_Click);
+            // 
+            // btnAgregarImagen
+            // 
+            this.btnAgregarImagen.Location = new System.Drawing.Point(207, 115);
+            this.btnAgregarImagen.Name = "btnAgregarImagen";
+            this.btnAgregarImagen.Size = new System.Drawing.Size(34, 23);
+            this.btnAgregarImagen.TabIndex = 15;
+            this.btnAgregarImagen.Text = "+";
+            this.btnAgregarImagen.UseVisualStyleBackColor = true;
+            this.btnAgregarImagen.Click += new System.EventHandler(this.btnAgregarImagen_Click);
             // 
             // frmAltaTienda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(486, 243);
+            this.Controls.Add(this.btnAgregarImagen);
             this.Controls.Add(this.pbxTienda);
             this.Controls.Add(this.txtImagenUrl);
             this.Controls.Add(this.lblUrlIMagen);
@@ -226,5 +239,6 @@ namespace TP_Final2
         private System.Windows.Forms.Label lblUrlIMagen;
         private System.Windows.Forms.TextBox txtImagenUrl;
         private System.Windows.Forms.PictureBox pbxTienda;
+        private System.Windows.Forms.Button btnAgregarImagen;
     }
 }

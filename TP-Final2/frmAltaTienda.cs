@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 using Negocio;
+using System.Configuration;
 
 namespace TP_Final2
 {
     public partial class frmAltaTienda : Form
     {
         private Tienda tienda = null; // cuando toque modificar ya voy a tener un articulo caragdo
+        private OpenFileDialog archivo = null; 
         public frmAltaTienda()
         {
             InitializeComponent();
@@ -61,6 +64,10 @@ namespace TP_Final2
                     negocio.agregar(tienda);
                     MessageBox.Show("Agregado con exito");
                 }
+                //guardo imagen si levanto localmente
+                if (archivo != null && !(txtImagenUrl.Text.ToUpper().Contains("HTTP"))); // si el archivo es distinto de nulo y no tiene htto entonces
+                    File.Copy(archivo.FileName, ConfigurationManager.AppSettings["images-folder"] + archivo.SafeFileName); // me aseguro que tengo q guardar una imagen local
+                
                 Close();
             }
             catch (Exception ex)
@@ -121,5 +128,25 @@ namespace TP_Final2
                 pbxTienda.Load("https://lmgd.co.uk/wp-content/uploads/2016/12/Gallery-Icon.jpg");
             }
         }
+
+        private void pbxTienda_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAgregarImagen_Click(object sender, EventArgs e)
+        {
+            archivo = new OpenFileDialog();
+            archivo.Filter = "Archivos de imagen JPEG (*.jpg)|*.jpg|Archivos de imagen PNG (*.png)|*.png"; // "jpg|*.jpg"|png|*.png";
+            // me guarda la ruta dl archivo seleccionado
+            if(archivo.ShowDialog() == DialogResult.OK)
+            {
+                txtImagenUrl.Text = archivo.FileName; // lee el archivo y lo guardo en la caja de texto
+                cargarImagen(archivo.FileName);
+
+            }
+
+        }
+
     }
 }
