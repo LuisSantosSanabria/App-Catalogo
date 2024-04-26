@@ -16,7 +16,6 @@ namespace Dominio
         [DisplayName("Descripción")]
         public string Descripcion { get; set; }
         public string ImagenUrl { get; set; }
-        //  public Elemento Tipo { get; set; }
         public Marca Marca { get; set; }
         public Categoria Categoria { get; set; }
     }

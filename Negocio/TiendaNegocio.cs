@@ -23,7 +23,7 @@ namespace Negocio
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true";//a donde me vpy a conectar
                 comando.CommandType = System.Data.CommandType.Text; //que tipo es x ej: txt
-                comando.CommandText = "Select A.Id,A.Codigo, Nombre, A.Descripcion, ImagenUrl, C.Descripcion as Categoria, M.Descripcion as Marca From ARTICULOS A, CATEGORIAS C, MARCAS M where C.Id = A.IdCategoria and M.Id = A.IdMarca\r\n"; // la consulta que hago
+                comando.CommandText = "SELECT A.Id, A.Codigo, Nombre, A.Descripcion, ImagenUrl, C.Id AS IdCategoria, C.Descripcion AS Categoria, M.Id AS IdMarca, M.Descripcion AS Marca FROM ARTICULOS A, CATEGORIAS C, MARCAS M WHERE C.Id = A.IdCategoria AND M.Id = A.IdMarca"; // la consulta que hago
                 comando.Connection = conexion;
 
                 conexion.Open();
@@ -39,17 +39,17 @@ namespace Negocio
                     aux.Descripcion = (string)lector["Descripcion"];
 
                     // para la exepciones de las imagenes
-                    // if(!(lector.IsDBNull(lector.GetOrdinal("ImagenUrl")))) // si no es nulo lo leo
                     if (!(lector["ImagenUrl"] is DBNull))
                     aux.ImagenUrl = (string)lector["ImagenUrl"]; // si no es dbnull trata de leerlo
                     // si la columna es Null no hay problema, Si es NOt NUll si hago estas lineas
 
-                   // aux.Tipo = new Elemento(); // para que no me referencia nula
-                    //aux.Tipo.Descripcion = (string)lector["Tipo"]; //tipo no va tener una instancia
+                    // para que no me referencia nula
                     aux.Marca = new Marca();
+                    aux.Marca.Id = (int)lector["IdMarca"];
                     aux.Marca.Descripcion = (string)lector["Marca"];
                     aux.Categoria = new Categoria();
-                    aux.Categoria.DescripcionC= (string)lector["Categoria"];
+                    aux.Categoria.Id = (int)lector["IdCategoria"];
+                    aux.Categoria.Descripcion= (string)lector["Categoria"];
 
                     lista.Add(aux); //agreso ese articulo a la lista
                 }
@@ -73,7 +73,7 @@ namespace Negocio
             {
                 datos.setearConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria,ImagenUrl) values ('" + nuevo.Codigo + "','" + nuevo.Nombre + "','" + nuevo.Descripcion + "', @idMarca, @idCategoria, @ImagenUrl)");
                 datos.setearParanetros("@idMarca", nuevo.Marca.Id);
-                datos.setearParanetros("@idCategoria", nuevo.Categoria.IdC); // duda
+                datos.setearParanetros("@idCategoria", nuevo.Categoria.Id); // duda
                 datos.setearParanetros("@ImagenUrl", nuevo.ImagenUrl);
                 datos.ejecutarAccion();
             }
@@ -86,9 +86,30 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
-        public void modificar(Tienda modificar)
+        public void modificar(Tienda modi)
         {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("update ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, ImagenUrl = @img, IdMarca = @IdMarca, IdCategoria = @IdCategoria Where Id = @Id");
+                datos.setearParanetros("@codigo", modi.Codigo);
+                datos.setearParanetros("@nombre", modi.Nombre);
+                datos.setearParanetros("@descripcion", modi.Descripcion);
+                datos.setearParanetros("@img", modi.ImagenUrl);
+                datos.setearParanetros("@IdMarca", modi.Marca.Id);
+                datos.setearParanetros("@IdCategoria", modi.Categoria.Id);
+                datos.setearParanetros("@Id", modi.Id);
 
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
     }
 }

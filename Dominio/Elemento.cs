@@ -20,11 +20,11 @@ namespace Dominio
     public class Categoria
     {
         // elementos de categoria
-        public int IdC { get; set; }
-        public string DescripcionC { set; get; }
+        public int Id { get; set; }
+        public string Descripcion { set; get; }
         public override string ToString()
         {
-            return DescripcionC;
+            return Descripcion;
         }
     }
 }

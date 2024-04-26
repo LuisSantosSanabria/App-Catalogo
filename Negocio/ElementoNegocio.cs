@@ -48,8 +48,8 @@ namespace Negocio
                 while (datos.Lector.Read())
                 {
                     Categoria cat = new Categoria();
-                    cat.IdC = (int)datos.Lector["Id"];
-                    cat.DescripcionC = (string)datos.Lector["Descripcion"];
+                    cat.Id = (int)datos.Lector["Id"];
+                    cat.Descripcion = (string)datos.Lector["Descripcion"];
                     lista.Add(cat);
                 }
                 return lista;

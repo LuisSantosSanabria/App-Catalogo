@@ -70,5 +70,17 @@ namespace TP_Final2
             //actulizar la crga
             cargar();
         }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            // le paso por parametro el objeto que voy a modificar
+
+            Tienda seleccionado;
+            seleccionado = (Tienda)dgvTienda.CurrentRow.DataBoundItem;
+
+            frmAltaTienda modificar= new frmAltaTienda(seleccionado); //este recibe un prodcuto
+            modificar.ShowDialog();
+            cargar();
+        }
     }
 }
