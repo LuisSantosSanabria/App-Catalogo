@@ -23,7 +23,7 @@ namespace Negocio
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true";//a donde me vpy a conectar
                 comando.CommandType = System.Data.CommandType.Text; //que tipo es x ej: txt
-                comando.CommandText = "SELECT A.Id, A.Codigo, Nombre, A.Descripcion, ImagenUrl, C.Id AS IdCategoria, C.Descripcion AS Categoria, M.Id AS IdMarca, M.Descripcion AS Marca FROM ARTICULOS A, CATEGORIAS C, MARCAS M WHERE C.Id = A.IdCategoria AND M.Id = A.IdMarca"; // la consulta que hago
+                comando.CommandText = "SELECT A.Id, A.Codigo, Nombre, A.Descripcion, A.Precio, A.ImagenUrl, C.Id AS IdCategoria, C.Descripcion AS Categoria, M.Id AS IdMarca, M.Descripcion AS Marca FROM ARTICULOS A, CATEGORIAS C, MARCAS M WHERE C.Id = A.IdCategoria AND M.Id = A.IdMarca"; // la consulta que hago
                 comando.Connection = conexion;
 
                 conexion.Open();
@@ -37,6 +37,14 @@ namespace Negocio
                     aux.Codigo = (string)lector["Codigo"];
                     aux.Nombre = (string)lector["Nombre"]; // es lo mismo que la linea de arriba pero mas practico
                     aux.Descripcion = (string)lector["Descripcion"];
+                    if (lector["Precio"] != DBNull.Value)
+                    {
+                        aux.precio = Convert.ToDecimal(lector["Precio"]);
+                    }
+                    else
+                    {
+                        aux.precio = 0;
+                    }
 
                     // para la exepciones de las imagenes
                     if (!(lector["ImagenUrl"] is DBNull))
@@ -71,10 +79,11 @@ namespace Negocio
             //no va devolcer registros va insertar registros
             try
             {
-                datos.setearConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria,ImagenUrl) values ('" + nuevo.Codigo + "','" + nuevo.Nombre + "','" + nuevo.Descripcion + "', @idMarca, @idCategoria, @ImagenUrl)");
+                datos.setearConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria,ImagenUrl,Precio) values ('" + nuevo.Codigo + "','" + nuevo.Nombre + "','" + nuevo.Descripcion + "', @idMarca, @idCategoria, @ImagenUrl, @Precio)");
                 datos.setearParanetros("@idMarca", nuevo.Marca.Id);
-                datos.setearParanetros("@idCategoria", nuevo.Categoria.Id); // duda
+                datos.setearParanetros("@idCategoria", nuevo.Categoria.Id);
                 datos.setearParanetros("@ImagenUrl", nuevo.ImagenUrl);
+                datos.setearParanetros("@Precio", nuevo.precio);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -91,10 +100,11 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("update ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, ImagenUrl = @img, IdMarca = @IdMarca, IdCategoria = @IdCategoria Where Id = @Id");
+                datos.setearConsulta("update ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, Precio = @precio, ImagenUrl = @img, IdMarca = @IdMarca, IdCategoria = @IdCategoria Where Id = @Id");
                 datos.setearParanetros("@codigo", modi.Codigo);
                 datos.setearParanetros("@nombre", modi.Nombre);
                 datos.setearParanetros("@descripcion", modi.Descripcion);
+                datos.setearParanetros("@precio", modi.precio);
                 datos.setearParanetros("@img", modi.ImagenUrl);
                 datos.setearParanetros("@IdMarca", modi.Marca.Id);
                 datos.setearParanetros("@IdCategoria", modi.Categoria.Id);

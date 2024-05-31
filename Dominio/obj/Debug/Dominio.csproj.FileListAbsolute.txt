@@ -4,3 +4,9 @@ C:\Users\llsss\Desktop\App Catalogo\Tienda\Dominio\obj\Debug\Dominio.csproj.Asse
 C:\Users\llsss\Desktop\App Catalogo\Tienda\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 C:\Users\llsss\Desktop\App Catalogo\Tienda\Dominio\obj\Debug\Dominio.dll
 C:\Users\llsss\Desktop\App Catalogo\Tienda\Dominio\obj\Debug\Dominio.pdb
+C:\Users\llsss\Desktop\Curso C# Nivel 2\App Catalogo\Tienda\Dominio\bin\Debug\Dominio.dll
+C:\Users\llsss\Desktop\Curso C# Nivel 2\App Catalogo\Tienda\Dominio\bin\Debug\Dominio.pdb
+C:\Users\llsss\Desktop\Curso C# Nivel 2\App Catalogo\Tienda\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
+C:\Users\llsss\Desktop\Curso C# Nivel 2\App Catalogo\Tienda\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\llsss\Desktop\Curso C# Nivel 2\App Catalogo\Tienda\Dominio\obj\Debug\Dominio.dll
+C:\Users\llsss\Desktop\Curso C# Nivel 2\App Catalogo\Tienda\Dominio\obj\Debug\Dominio.pdb

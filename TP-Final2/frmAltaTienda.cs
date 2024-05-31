@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Dominio;
 using Negocio;
 using System.Configuration;
+using System.Globalization;
 
 namespace TP_Final2
 {
@@ -33,6 +34,42 @@ namespace TP_Final2
         {
             this.Close(); // o close solo
         }
+        private bool ValidarAgregar()
+        {
+            if (string.IsNullOrEmpty(txtCodigo.Text) || string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtDescripcion.Text)) 
+            {
+                ControlPaint.DrawBorder(txtCodigo.CreateGraphics(), txtCodigo.ClientRectangle, Color.Red, 2, ButtonBorderStyle.Solid, Color.Red, 2, ButtonBorderStyle.Solid, Color.Red, 2, ButtonBorderStyle.Solid, Color.Red, 2, ButtonBorderStyle.Solid);
+                ControlPaint.DrawBorder(txtNombre.CreateGraphics(), txtNombre.ClientRectangle, Color.Red, 2, ButtonBorderStyle.Solid, Color.Red, 2, ButtonBorderStyle.Solid, Color.Red, 2, ButtonBorderStyle.Solid, Color.Red, 2, ButtonBorderStyle.Solid);
+                ControlPaint.DrawBorder(txtDescripcion.CreateGraphics(), txtDescripcion.ClientRectangle, Color.Red, 2, ButtonBorderStyle.Solid, Color.Red, 2, ButtonBorderStyle.Solid, Color.Red, 2, ButtonBorderStyle.Solid, Color.Red, 2, ButtonBorderStyle.Solid);
+               
+                return false;
+            }
+            else
+            {
+                RestaurarBordes();
+                return true;
+            }
+
+            // Validación del precio
+           // if (!decimal.TryParse(txtPrecio.Text, out _))
+           // {
+           //     return false; // Devolver falso si el precio no es válido
+           // }
+
+            // Si todas las validaciones pasan, devolver verdadero
+           // return true;
+        }
+
+        private void RestaurarBordes()
+        {
+            txtCodigo.BorderStyle = BorderStyle.FixedSingle;
+            txtCodigo.BackColor = SystemColors.Window;
+            txtNombre.BorderStyle = BorderStyle.FixedSingle;
+            txtNombre.BackColor = SystemColors.Window;
+            txtDescripcion.BorderStyle = BorderStyle.FixedSingle;
+            txtDescripcion.BackColor = SystemColors.Window;
+        }
+
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -40,6 +77,10 @@ namespace TP_Final2
             TiendaNegocio negocio = new TiendaNegocio();
             try 
             {
+                if (!ValidarAgregar()) //si la validacion falla se ejecuta el if
+                {
+                    return;
+                }
                 if (tienda == null)
                     tienda = new Tienda(); //si el artiulo esta nuelo estonces cargo los datos
 
@@ -51,6 +92,15 @@ namespace TP_Final2
                 tienda.Categoria = (Categoria)cboCategoria.SelectedItem;
                 // Mapear para agregar una imagen nueva del articulo
                 tienda.ImagenUrl = txtImagenUrl.Text;
+                try
+                {
+                    tienda.precio = Convert.ToDecimal(txtPrecio.Text);
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Ingrese solo numeros.");
+                    return; //sale sin continuar
+                }
 
                 //como se cual de los dos(A/M) tiene que elegir
                 if (tienda.Id != 0)
@@ -65,9 +115,10 @@ namespace TP_Final2
                     MessageBox.Show("Agregado con exito");
                 }
                 //guardo imagen si levanto localmente
-                if (archivo != null && !(txtImagenUrl.Text.ToUpper().Contains("HTTP"))); // si el archivo es distinto de nulo y no tiene htto entonces
+                if (archivo != null && !(txtImagenUrl.Text.ToUpper().Contains("HTTP")))  // si el archivo es distinto de nulo y no tiene htto entonces
+                {
                     File.Copy(archivo.FileName, ConfigurationManager.AppSettings["images-folder"] + archivo.SafeFileName); // me aseguro que tengo q guardar una imagen local
-                
+                }
                 Close();
             }
             catch (Exception ex)
@@ -95,6 +146,7 @@ namespace TP_Final2
                     txtCodigo.Text = tienda.Codigo;
                     txtNombre.Text = tienda.Nombre;
                     txtDescripcion.Text = tienda.Descripcion;
+                    txtPrecio.Text = tienda.precio.ToString();
                     txtImagenUrl.Text = tienda.ImagenUrl;
                     cargarImagen(tienda.ImagenUrl);
                     cboMarca.SelectedValue = tienda.Marca.Id; // me preseleccionado los valores que tiene el articulo que elija
@@ -148,5 +200,14 @@ namespace TP_Final2
 
         }
 
+        private void txtCodigo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
