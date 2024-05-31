@@ -50,14 +50,7 @@ namespace TP_Final2
                 return true;
             }
 
-            // Validación del precio
-           // if (!decimal.TryParse(txtPrecio.Text, out _))
-           // {
-           //     return false; // Devolver falso si el precio no es válido
-           // }
 
-            // Si todas las validaciones pasan, devolver verdadero
-           // return true;
         }
 
         private void RestaurarBordes()
@@ -177,7 +170,7 @@ namespace TP_Final2
             }
             catch (Exception ex)
             {
-                pbxTienda.Load("https://lmgd.co.uk/wp-content/uploads/2016/12/Gallery-Icon.jpg");
+                pbxTienda.Load("https://www.proplaymethod.com/wp-content/uploads/2021/06/ICONS-RECURSOS-04-min.png");
             }
         }
 
@@ -189,7 +182,7 @@ namespace TP_Final2
         private void btnAgregarImagen_Click(object sender, EventArgs e)
         {
             archivo = new OpenFileDialog();
-            archivo.Filter = "Archivos de imagen JPEG (*.jpg)|*.jpg|Archivos de imagen PNG (*.png)|*.png"; // "jpg|*.jpg"|png|*.png";
+            archivo.Filter = "jpg|*.jpg;|png|*.png";
             // me guarda la ruta dl archivo seleccionado
             if(archivo.ShowDialog() == DialogResult.OK)
             {
